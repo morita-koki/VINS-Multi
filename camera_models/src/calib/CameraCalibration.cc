@@ -231,9 +231,10 @@ CameraCalibration::drawResults(std::vector<cv::Mat>& images) const
     for (size_t i = 0; i < images.size(); ++i)
     {
         cv::Mat& image = images.at(i);
-        if (image.channels() == 1)
+        // if (image.channels() == 1)
+        if (image.channels() == 3)
         {
-            cv::cvtColor(image, image, CV_GRAY2RGB);
+            cv::cvtColor(image, image, cv::COLOR_BGR2GRAY);
         }
 
         std::vector<cv::Point2f> estImagePoints;
